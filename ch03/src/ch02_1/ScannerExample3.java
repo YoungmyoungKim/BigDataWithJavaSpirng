@@ -16,6 +16,7 @@ public class ScannerExample3 {
 			
 			checkContinue();
 		}
+		scanner.close();
 		System.out.println("Á¾·á");
 	}
 	
