@@ -1,6 +1,7 @@
 package ch07;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class ScannerInputExample2 {
 
@@ -9,7 +10,11 @@ public class ScannerInputExample2 {
 		
 		//토큰 단위가 아닌 라인 단위로 입력받는 메소드 nextLine();  
 		String str=scanner.nextLine();
-		System.out.println(str);
+		
+		StringTokenizer st=new StringTokenizer(str);
+		while(st.hasMoreTokens()) {
+			System.out.println(st.nextToken());
+		}
 		
 		scanner.close();
 	}
