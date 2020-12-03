@@ -5,9 +5,9 @@ public class Item {
 	String itemCode;
 	String name;
 	int qty;
-	
+	public Item() {}
 	public Item(String name, int qty) {
-		this.itemCode="100-"+String.format("%04d", ++seq);
+		this.itemCode="88"+String.format("%06d", ++seq);
 		this.name=name;
 		this.qty=qty;
 	}

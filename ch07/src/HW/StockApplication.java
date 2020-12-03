@@ -86,11 +86,12 @@ public class StockApplication {
 		System.out.println("----------");
 		System.out.print("제품 코드 : ");
 		String itemCode = scanner.next();
+		Item curItem = findItem(itemCode);
+		if(curItem==null) {System.out.println("결과 : 상품이 없습니다."); return; }
 		System.out.print("출고량 : ");
 		int qty = scanner.nextInt();
-		Item curItem = findItem(itemCode);
-		if(itemCode == null) {
-			System.out.println("결과 : 계좌가 없습니다.");
+		if(curItem.getQty()<qty) {
+			System.out.println("결과 : 상품의 수량이 부족합니다.");
 		} else {
 			curItem.setQty((curItem.getQty()-qty));
 			System.out.println("결과 : 출고 성공했습니다.");
@@ -98,10 +99,11 @@ public class StockApplication {
 	}
 	
 	private static Item findItem(String itemCode){
+		Item it=null;
 		for(int i = 0; i < itemArray.length; i++) {
-			if(itemCode.equals(itemArray[i].getItemCode()))
+			if(itemArray[i] != null && itemCode.equals(itemArray[i].getItemCode()))
 				return itemArray[i];
+				}
+		return it;
 		}
-		return null;
-	}
 }

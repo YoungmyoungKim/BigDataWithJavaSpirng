@@ -72,7 +72,7 @@ public class BankApplication{
 		System.out.print("예금액 : ");
 		int money = scanner.nextInt();
 		BankAccount curAccount = findAccount(ano);
-		if(ano == null) {
+		if(curAccount == null) {
 			System.out.println("결과 : 계좌가 없습니다.");
 		} else {
 			curAccount.setBalance((curAccount.getBalance()+money));
@@ -91,7 +91,7 @@ public class BankApplication{
 		System.out.print("출금액 : ");
 		int money = scanner.nextInt();
 		BankAccount curAccount = findAccount(ano);
-		if(ano == null) {
+		if(curAccount == null) {
 			System.out.println("결과 : 계좌가 없습니다.");
 		} else {
 			curAccount.setBalance((curAccount.getBalance()-money));
@@ -101,10 +101,12 @@ public class BankApplication{
 	
 	  //Account 배열에서 ano와 동일한 Account 객체 찾기
 	private static BankAccount findAccount(String ano){
+		BankAccount acc=null;
 		for(int i = 0; i < accountArray.length; i++) {
-			if(ano.equals(accountArray[i].getAno()))
-				return accountArray[i];
+			if(accountArray[i] != null && ano.equals(accountArray[i].getAno()))
+				acc= accountArray[i];
+				break;
 		}
-		return null;
+		return acc;
 	}
 }
